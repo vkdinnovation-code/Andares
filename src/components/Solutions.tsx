@@ -7,8 +7,8 @@ export const Solutions: React.FC = () => {
   const { t } = useTranslation();
 
   const getFeatures = (key: string) => {
-     const features = t(key, { returnObjects: true });
-     return Array.isArray(features) ? features : [];
+      const f = t(key, { returnObjects: true });
+      return Array.isArray(f) ? f : [];
   };
 
   return (
@@ -47,12 +47,12 @@ export const Solutions: React.FC = () => {
                         </h3>
 
                         <ul className="space-y-3">
-                            {getFeatures('solutions.epicor.features').map((item, i) => (
+                            {(getFeatures('solutions.epicor.features') as string[]).map((item, i) => (
                                 <li key={i} className="flex items-center gap-3 text-slate-700 font-medium">
                                     <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
                                         <Check size={12} strokeWidth={3} />
                                     </div>
-                                    {item as string}
+                                    {item}
                                 </li>
                             ))}
                         </ul>
@@ -88,12 +88,12 @@ export const Solutions: React.FC = () => {
                         </h3>
 
                         <ul className="space-y-3">
-                            {getFeatures('solutions.iscala.features').map((item, i) => (
+                            {(getFeatures('solutions.iscala.features') as string[]).map((item, i) => (
                                 <li key={i} className="flex items-center gap-3 text-slate-700 font-medium">
                                     <div className="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
                                         <Check size={12} strokeWidth={3} />
                                     </div>
-                                    {item as string}
+                                    {item}
                                 </li>
                             ))}
                         </ul>

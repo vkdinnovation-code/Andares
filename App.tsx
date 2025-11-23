@@ -1,17 +1,24 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
+import { Layout } from './components/Layout';
 import Home from './pages/Home';
+import { EpicorPage } from './pages/EpicorPage';
+import { IscalaPage } from './pages/IscalaPage';
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <HashRouter>
+      <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Home />} />
-        {/* Additional routes for inner pages would go here, 
-            but for the landing page demo, we route everything to Home */}
-        <Route path="*" element={<Home />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/epicor" element={<EpicorPage />} />
+          <Route path="/iscala" element={<IscalaPage />} />
+          <Route path="*" element={<Home />} />
+        </Route>
       </Routes>
-    </Router>
+    </HashRouter>
   );
 };
 

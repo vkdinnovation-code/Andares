@@ -1,12 +1,17 @@
-
 import React, { useState } from 'react';
 import { IndustryTab } from '../types';
-import { Factory, Truck, Users, CheckCircle2, ArrowRight, PieChart, Quote } from 'lucide-react';
+import { Factory, Truck, Users, PieChart, CheckCircle2, ArrowRight, Quote } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export const Industries: React.FC = () => {
   const { t } = useTranslation();
   const [activeId, setActiveId] = useState('manufacturing');
+
+  // Helper to safely get array from translation
+  const getArray = (key: string) => {
+    const res = t(key, { returnObjects: true });
+    return Array.isArray(res) ? res : [];
+  };
 
   const industries: IndustryTab[] = [
     {
@@ -14,10 +19,10 @@ export const Industries: React.FC = () => {
       label: t('industries.items.manufacturing.label'),
       title: t('industries.items.manufacturing.title'),
       description: t('industries.items.manufacturing.description'),
-      benefits: t('industries.items.manufacturing.benefits', { returnObjects: true }) as string[],
+      benefits: getArray('industries.items.manufacturing.benefits') as string[],
       quote: {
-        text: t('industries.items.manufacturing.quote'),
-        author: "Tootmisjuht, 15a staaži"
+        text: t('industries.items.manufacturing.quote.text'),
+        author: t('industries.items.manufacturing.quote.author')
       }
     },
     {
@@ -25,10 +30,10 @@ export const Industries: React.FC = () => {
       label: t('industries.items.wholesale.label'),
       title: t('industries.items.wholesale.title'),
       description: t('industries.items.wholesale.description'),
-      benefits: t('industries.items.wholesale.benefits', { returnObjects: true }) as string[],
+      benefits: getArray('industries.items.wholesale.benefits') as string[],
       quote: {
-        text: t('industries.items.wholesale.quote'),
-        author: "Logistikadirektor"
+        text: t('industries.items.wholesale.quote.text'),
+        author: t('industries.items.wholesale.quote.author')
       }
     },
     {
@@ -36,10 +41,10 @@ export const Industries: React.FC = () => {
       label: t('industries.items.service.label'),
       title: t('industries.items.service.title'),
       description: t('industries.items.service.description'),
-      benefits: t('industries.items.service.benefits', { returnObjects: true }) as string[],
+      benefits: getArray('industries.items.service.benefits') as string[],
       quote: {
-        text: "Täpne arveldus on meie kasvu alus.",
-        author: "Tegevjuht"
+        text: t('industries.items.service.quote.text'),
+        author: t('industries.items.service.quote.author')
       }
     },
     {
@@ -47,15 +52,25 @@ export const Industries: React.FC = () => {
       label: t('industries.items.finance.label'),
       title: t('industries.items.finance.title'),
       description: t('industries.items.finance.description'),
-      benefits: t('industries.items.finance.benefits', { returnObjects: true }) as string[],
+      benefits: getArray('industries.items.finance.benefits') as string[],
       quote: {
-        text: "Finantside konsolideerimine on nüüd automaatne.",
-        author: "CFO"
+        text: t('industries.items.finance.quote.text'),
+        author: t('industries.items.finance.quote.author')
       }
     }
   ];
 
   const activeTab = industries.find(i => i.id === activeId) || industries[0];
+
+  const getIcon = (id: string) => {
+    switch (id) {
+      case 'manufacturing': return <Factory size={20} />;
+      case 'wholesale': return <Truck size={20} />;
+      case 'service': return <Users size={20} />;
+      case 'finance': return <PieChart size={20} />;
+      default: return <Factory size={20} />;
+    }
+  };
 
   return (
     <section id="industries" className="py-24 bg-slate-50">
@@ -65,80 +80,79 @@ export const Industries: React.FC = () => {
            <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-900">
              {t('industries.header')}
            </h2>
+           <p className="text-slate-500 mt-4 max-w-2xl mx-auto">
+             {t('industries.subtext')}
+           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
           {/* Left: Tabs Navigation */}
-          <div className="lg:col-span-4 flex flex-col gap-4">
+          <div className="lg:col-span-4 flex flex-col gap-3">
             {industries.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveId(tab.id)}
-                className={`group text-left px-6 py-5 rounded-2xl transition-all duration-300 flex items-center gap-4 border relative overflow-hidden ${
+                className={`group text-left px-6 py-4 rounded-xl transition-all duration-200 flex items-center gap-4 border ${
                   activeTab.id === tab.id
-                    ? 'bg-white border-primary-500 shadow-xl shadow-primary-900/5 ring-1 ring-primary-500'
-                    : 'bg-white border-slate-200 text-slate-500 hover:border-primary-300 hover:bg-slate-50'
+                    ? 'bg-white border-primary-500 shadow-lg shadow-primary-900/5 ring-1 ring-primary-500'
+                    : 'bg-transparent border-transparent hover:bg-white hover:border-slate-200 text-slate-600'
                 }`}
               >
-                <div className={`p-3 rounded-xl transition-colors ${activeTab.id === tab.id ? 'bg-primary-50 text-primary-600' : 'bg-slate-100 text-slate-400 group-hover:bg-white group-hover:text-primary-500'}`}>
-                  {tab.id === 'manufacturing' && <Factory size={24} />}
-                  {tab.id === 'wholesale' && <Truck size={24} />}
-                  {tab.id === 'service' && <Users size={24} />}
-                  {tab.id === 'finance' && <PieChart size={24} />}
+                <div className={`p-2.5 rounded-lg transition-colors ${
+                  activeTab.id === tab.id 
+                    ? 'bg-primary-500 text-white shadow-md shadow-primary-500/20' 
+                    : 'bg-slate-100 text-slate-400 group-hover:bg-white group-hover:text-primary-500'
+                }`}>
+                  {getIcon(tab.id)}
                 </div>
-                <div>
-                  <h4 className={`font-bold text-lg ${activeTab.id === tab.id ? 'text-slate-900' : 'text-slate-600 group-hover:text-slate-900'}`}>
-                    {tab.label}
-                  </h4>
-                </div>
-                {activeTab.id === tab.id && (
-                    <div className="absolute right-4 text-primary-500 animate-in fade-in slide-in-from-left-2">
-                        <ArrowRight size={20} />
-                    </div>
-                )}
+                <span className={`font-bold text-lg ${activeTab.id === tab.id ? 'text-slate-900' : 'text-slate-500'}`}>
+                  {tab.label}
+                </span>
               </button>
             ))}
           </div>
 
           {/* Right: Content Card */}
           <div className="lg:col-span-8">
-            <div key={activeId} className="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-xl shadow-slate-200/50 h-full flex flex-col animate-in fade-in slide-in-from-bottom-4 duration-500">
-                
-                <div className="mb-8">
-                    <h3 className="text-3xl font-display font-bold text-slate-900 mb-4">
-                    {activeTab.title}
+            <div className="bg-white rounded-3xl p-8 md:p-10 border border-slate-100 shadow-xl shadow-slate-200/40 h-full flex flex-col relative overflow-hidden">
+                {/* Background Decoration */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary-50 to-transparent rounded-bl-full opacity-50 pointer-events-none"></div>
+
+                <div className="relative z-10">
+                    <h3 className="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-4">
+                        {activeTab.title}
                     </h3>
-                    <p className="text-slate-600 text-lg leading-relaxed">
-                    {activeTab.description}
+                    <p className="text-slate-600 text-lg leading-relaxed mb-8">
+                        {activeTab.description}
                     </p>
-                </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mb-10">
-                  {activeTab.benefits.slice(0,4).map((benefit, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <div className="mt-0.5 min-w-[20px] text-emerald-500">
-                        <CheckCircle2 size={20} strokeWidth={2.5} />
-                      </div>
-                      <span className="text-slate-700 font-medium">{benefit}</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        {activeTab.benefits.map((benefit, i) => (
+                            <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-slate-50/50 border border-slate-100/50">
+                                <div className="mt-0.5 min-w-[20px] text-primary-500">
+                                    <CheckCircle2 size={20} strokeWidth={2.5} />
+                                </div>
+                                <span className="text-slate-700 font-medium text-sm">{benefit}</span>
+                            </div>
+                        ))}
                     </div>
-                  ))}
-                </div>
 
-                {activeTab.quote && (
-                  <div className="bg-slate-50 rounded-xl p-6 border border-slate-100 mb-8 relative">
-                     <Quote size={24} className="text-primary-200 absolute top-4 left-4" />
-                     <div className="relative z-10 pl-2">
-                        <p className="italic text-slate-600 mb-3 font-medium">"{activeTab.quote.text}"</p>
-                        <p className="text-xs font-bold text-slate-900 uppercase tracking-wider">— {activeTab.quote.author}</p>
-                     </div>
-                  </div>
-                )}
-                
-                <div className="mt-auto pt-8 border-t border-slate-100">
-                   <a href="#contact" className="inline-flex items-center gap-2 bg-slate-900 hover:bg-primary-600 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-primary-600/30 transform hover:-translate-y-0.5">
-                     Loe lähemalt
-                     <ArrowRight size={18} />
-                   </a>
+                    {activeTab.quote && (
+                        <div className="bg-slate-50 rounded-xl p-5 border-l-4 border-primary-300 mb-8 italic text-slate-600">
+                            <div className="flex gap-2 mb-2 text-primary-200">
+                                <Quote size={20} />
+                            </div>
+                            <p className="mb-2">"{activeTab.quote.text}"</p>
+                            <p className="text-xs font-bold text-slate-900 uppercase not-italic">— {activeTab.quote.author}</p>
+                        </div>
+                    )}
+
+                    <div className="mt-auto">
+                       <a href="#contact" className="inline-flex items-center gap-2 bg-slate-900 hover:bg-primary-600 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg hover:shadow-primary-600/30 transform hover:-translate-y-0.5">
+                         {t('solutions.learnMore')}
+                         <ArrowRight size={18} />
+                       </a>
+                    </div>
                 </div>
             </div>
           </div>

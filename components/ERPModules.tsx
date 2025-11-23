@@ -1,9 +1,13 @@
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const ERPModules: React.FC = () => {
   const { t } = useTranslation();
+
+  const getList = (key: string) => {
+      const l = t(key, { returnObjects: true });
+      return Array.isArray(l) ? l : [];
+  }
 
   return (
     <section id="modules" className="py-16 bg-white">
@@ -36,7 +40,7 @@ export const ERPModules: React.FC = () => {
                 </p>
 
                 <ul className="list-disc pl-5 mb-6 space-y-1 text-sm md:text-base font-medium marker:text-primary-500">
-                  {(t('modules.financeContent.list1', { returnObjects: true }) as string[]).map((item, i) => (
+                  {(getList('modules.financeContent.list1') as string[]).map((item, i) => (
                     <li key={i}>{item}</li>
                   ))}
                 </ul>
@@ -46,7 +50,7 @@ export const ERPModules: React.FC = () => {
                 </h3>
 
                 <ul className="list-disc pl-5 mb-6 space-y-1 text-sm md:text-base marker:text-primary-500">
-                  {(t('modules.financeContent.list2', { returnObjects: true }) as string[]).map((item, i) => (
+                  {(getList('modules.financeContent.list2') as string[]).map((item, i) => (
                     <li key={i}>{item}</li>
                   ))}
                 </ul>

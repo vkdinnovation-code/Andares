@@ -1,3 +1,4 @@
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -175,9 +176,66 @@ const resources = {
           f5: { title: 'Müügihaldus (CRM)', desc: 'Pakkumiste koostamine ja kliendisuhete haldus.' },
           f6: { title: 'Kvaliteedikontroll', desc: 'Jälgitavus partiide ja seerianumbrite lõikes.' }
         },
+        capabilities: {
+          title: 'Täielik funktsionaalsus',
+          items: {
+            production: { title: 'Tootmise juhtimine (MES)', desc: 'Planeerimine ja täitmine reaalajas.' },
+            project: { title: 'Projektijuhtimine', desc: 'Jälgi projekti kulusid ja tähtaegu.' },
+            asset: { title: 'Varade haldus (EAM)', desc: 'Seadmete hooldus ja elutsükli juhtimine.' },
+            maintenance: { title: 'Hooldustellimused', desc: 'Ennetav hooldus ja remont.' },
+            supply: { title: 'Tarneahela haldus (SCM)', desc: 'Ostmine ja varude optimeerimine.' }
+          }
+        },
         cta: {
           title: 'Valmis järgmiseks sammuks?',
           text: 'Vii oma tootmine uuele tasemele Epicor Kineticuga.'
+        }
+      },
+      iscalaPage: {
+        hero: {
+          title: 'Epicor iScala',
+          subtitle: 'Globaalne äri, lokaalne kontroll.',
+          desc: 'Terviklik ERP lahendus rahvusvahelistele ettevõtetele, hulgimüüjatele ja hotellidele.',
+          cta: 'Küsi pakkumist'
+        },
+        problems: {
+          title: 'Väljakutsed, mida ületame',
+          p1: { title: 'Killustunud andmed', desc: 'Erinevad süsteemid finantside ja lao jaoks tekitavad vigu.' },
+          p2: { title: 'Keeruline aruandlus', desc: 'Kontserni konsolideerimine võtab nädalaid, mitte minuteid.' },
+          p3: { title: 'Globaalne skaleerimine', desc: 'Vajadus toe järele mitmes riigis ja valuutas.' }
+        },
+        features: {
+          title: 'iScala Võimekused',
+          f1: { title: 'Globaalne Finants', desc: 'Mitme ettevõtte, valuuta ja keele tugi ühes andmebaasis.' },
+          f2: { title: 'Tarneahel & Logistika', desc: 'Täiustatud laohaldus (WMS) ja nõudluse planeerimine.' },
+          f3: { title: 'Teenindusjuhtimine', desc: 'Lepingute, garantiide ja väliteeninduse (Field Service) haldus.' },
+          f4: { title: 'Projektijuhtimine', desc: 'Kulude ja tulude jälgimine projektipõhiselt.' },
+          f5: { title: 'Hospitality', desc: 'Spetsiaalne lahendus hotellidele ja restoranidele (PMS liidestused).' },
+          f6: { title: 'Integratsioonid', desc: 'Lihtne ühendamine pankade, e-poodide ja partneritega.' }
+        },
+        capabilities: {
+          title: 'Täielik funktsionaalsus',
+          items: {
+            logistics: { title: 'Logistika ja Laohaldus (WMS)', desc: 'Täpne laoseis ja tarned.' },
+            finance: { title: 'Finantsjuhtimine', desc: 'Pearaamat, võlad, nõuded, mitu valuutat.' },
+            supply: { title: 'Hanke- ja Tarneahela haldus', desc: 'Ostutellimused ja tarnijad.' },
+            contracts: { title: 'Lepingute haldus', desc: 'Teenuslepingud ja arveldus.' },
+            hr: { title: 'Palga- ja personalihaldus', desc: 'Tööajaarvestus ja palgad.' }
+          }
+        },
+        modules: {
+          title: 'Funktsionaalsus ja Moodulid',
+          items: {
+            finance: { title: 'Finantsjuhtimine', desc: 'Mitme valuuta ja ettevõtte tugi.' },
+            logistics: { title: 'Logistika ja Laohaldus', desc: 'Optimeeritud laoseis ja tarned.' },
+            hr: { title: 'Palga- ja personalihaldus', desc: 'Palgad ja tööjõu planeerimine.' },
+            contracts: { title: 'Lepingute haldus', desc: 'Lepingute elutsükli haldus.' },
+            supply: { title: 'Tarneahela juhtimine', desc: 'Tõhus tarneahela ja varude juhtimine.' }
+          }
+        },
+        cta: {
+          title: 'Optimeeri oma äriprotsesse.',
+          text: 'Võta kontroll oma rahvusvahelise äri üle.'
         }
       },
       references: {
@@ -269,7 +327,7 @@ const resources = {
         title: 'Tootmine korda.',
         subtitle: 'Broneeri tasuta 30-minutiline konsultatsioon.',
         button: 'Broneeri audit',
-        callAction: 'Helista'
+        callAction: 'Call'
       }
     }
   },
@@ -446,9 +504,66 @@ const resources = {
           f5: { title: 'Sales Management (CRM)', desc: 'Quote generation and customer relationship management.' },
           f6: { title: 'Quality Control', desc: 'Traceability by batches and serial numbers.' }
         },
+        capabilities: {
+          title: 'Full Functionality',
+          items: {
+            production: { title: 'Production Management (MES)', desc: 'Real-time planning and execution.' },
+            project: { title: 'Project Management', desc: 'Track project costs and deadlines.' },
+            asset: { title: 'Asset Management (EAM)', desc: 'Equipment maintenance and lifecycle management.' },
+            maintenance: { title: 'Maintenance Orders', desc: 'Preventive maintenance and repairs.' },
+            supply: { title: 'Supply Chain (SCM)', desc: 'Purchasing and inventory optimization.' }
+          }
+        },
         cta: {
           title: 'Ready for the next step?',
           text: 'Take your production to the next level with Epicor Kinetic.'
+        }
+      },
+      iscalaPage: {
+        hero: {
+          title: 'Epicor iScala',
+          subtitle: 'Global Business, Local Control.',
+          desc: 'Comprehensive ERP solution for international companies, hospitality, and wholesale.',
+          cta: 'Request Quote'
+        },
+        problems: {
+          title: 'Challenges We Overcome',
+          p1: { title: 'Fragmented Data', desc: 'Separate systems for finance and warehouse create errors.' },
+          p2: { title: 'Complex Reporting', desc: 'Group consolidation takes weeks instead of minutes.' },
+          p3: { title: 'Global Scaling', desc: 'Need for support in multiple countries and currencies.' }
+        },
+        features: {
+          title: 'iScala Capabilities',
+          f1: { title: 'Global Finance', desc: 'Multi-company, multi-currency, and multi-language support in one DB.' },
+          f2: { title: 'Supply Chain & Logistics', desc: 'Advanced warehouse management (WMS) and demand planning.' },
+          f3: { title: 'Service Management', desc: 'Contract, warranty, and field service management.' },
+          f4: { title: 'Project Management', desc: 'Track costs and revenue by project.' },
+          f5: { title: 'Hospitality', desc: 'Specialized solution for hotels and restaurants (PMS integrations).' },
+          f6: { title: 'Integrations', desc: 'Easy connection to banks, e-commerce, and partners.' }
+        },
+        capabilities: {
+          title: 'Full Functionality',
+          items: {
+            logistics: { title: 'Logistics & Warehouse (WMS)', desc: 'Accurate inventory and deliveries.' },
+            finance: { title: 'Financial Management', desc: 'General ledger, AP/AR, multi-currency.' },
+            supply: { title: 'Procurement & Supply Chain', desc: 'Purchase orders and suppliers.' },
+            contracts: { title: 'Contract Management', desc: 'Service contracts and billing.' },
+            hr: { title: 'Payroll & HR', desc: 'Time tracking and salaries.' }
+          }
+        },
+        modules: {
+          title: 'Capabilities & Modules',
+          items: {
+            finance: { title: 'Financial Management', desc: 'Multi-currency and multi-company support.' },
+            logistics: { title: 'Logistics & Warehouse', desc: 'Optimized inventory and deliveries.' },
+            hr: { title: 'Payroll & HR', desc: 'Payroll and workforce planning.' },
+            contracts: { title: 'Contract Management', desc: 'Contract lifecycle management.' },
+            supply: { title: 'Supply Chain', desc: 'Efficient supply chain and inventory management.' }
+          }
+        },
+        cta: {
+          title: 'Optimize your business processes.',
+          text: 'Take control of your international business.'
         }
       },
       references: {

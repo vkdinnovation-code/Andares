@@ -10,7 +10,7 @@ export const Process: React.FC = () => {
   const getSteps = () => {
     const s = t('process.steps', { returnObjects: true });
     return Array.isArray(s) ? s : [];
-  }
+  };
   const translatedSteps = getSteps() as { title: string }[];
 
   const steps = translatedSteps.map((s, i) => ({

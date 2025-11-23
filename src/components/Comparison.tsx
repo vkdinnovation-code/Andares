@@ -6,9 +6,9 @@ export const Comparison: React.FC = () => {
   const { t } = useTranslation();
 
   const getRows = () => {
-      const r = t('comparison.rows', { returnObjects: true });
-      return Array.isArray(r) ? r : [];
-  }
+    const res = t('comparison.rows', { returnObjects: true });
+    return Array.isArray(res) ? res : [];
+  };
   const rows = getRows() as any[];
 
   return (

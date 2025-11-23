@@ -6,9 +6,9 @@ export const References: React.FC = () => {
   const { t } = useTranslation();
 
   const getItems = () => {
-      const i = t('references.items', { returnObjects: true });
-      return Array.isArray(i) ? i : [];
-  }
+    const i = t('references.items', { returnObjects: true });
+    return Array.isArray(i) ? i : [];
+  };
   const industryLabels = getItems() as { label: string }[];
   
   const icons = [<Factory size={40} />, <Truck size={40} />, <Utensils size={40} />, <ShoppingBag size={40} />];
